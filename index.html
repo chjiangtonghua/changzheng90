@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>三百 · 纪念中国工农红军长征胜利九十周年</title>
+<meta name="description" content="《三百》— 以随机字符串推导设计语言，纪念中国工农红军长征胜利90周年。字符串长300，而长征途中平均每300米，就有一名红军牺牲。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Noto+Sans+SC:wght@300;400;500&family=JetBrains+Mono:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+
+<div class="march-bar"></div>
+<div class="march-readout"></div>
+<div class="tick-rail" data-tick-rail aria-hidden="true"></div>
+
+<!-- ============================ 导航：8 栏 ============================ -->
+<header class="topbar">
+  <a class="brand" href="index.html">
+    <span class="brand-mark">三</span>
+    <span>
+      <span class="brand-txt">三百</span>
+      <span class="brand-sub">LONG MARCH · 90</span>
+    </span>
+  </a>
+  <button class="nav-toggle" aria-label="展开导航">MENU</button>
+  <nav class="nav">
+    <a href="index.html"><i>01</i>首页</a>
+    <a href="march.html"><i>02</i>行程</a>
+    <a href="numbers.html"><i>03</i>数据</a>
+    <a href="battles.html"><i>04</i>战役</a>
+    <a href="figures.html"><i>05</i>人物</a>
+    <a href="spirit.html"><i>06</i>精神</a>
+    <a href="ninety.html"><i>07</i>九十</a>
+    <a href="seed.html"><i>08</i>种子</a>
+  </nav>
+</header>
+
+<!-- ============================ 首屏 ============================ -->
+<section class="hero">
+  <div class="hero-ridges" aria-hidden="true">
+    <svg viewBox="0 0 1440 620" preserveAspectRatio="none">
+      <path d="M0,420 L110,340 L190,392 L300,268 L392,332 L500,214 L596,300 L700,236 L820,320 L940,258 L1060,338 L1180,272 L1290,352 L1380,300 L1440,340 L1440,620 L0,620 Z" fill="#0E1412" opacity=".95"/>
+      <path d="M0,486 L130,404 L250,462 L370,346 L470,410 L590,318 L700,392 L810,330 L930,412 L1050,352 L1170,428 L1290,368 L1400,436 L1440,410 L1440,620 L0,620 Z" fill="#161C1B" opacity=".92"/>
+      <path d="M0,548 L150,486 L290,540 L410,462 L540,528 L660,470 L790,538 L910,486 L1030,546 L1150,494 L1270,548 L1390,506 L1440,528 L1440,620 L0,620 Z" fill="#0A0C0B"/>
+      <path d="M500,214 L470,262 L500,252 L530,268 L520,238 Z" fill="#E7E2D6" opacity=".13"/>
+      <path d="M300,268 L272,314 L300,304 L330,320 L320,292 Z" fill="#E7E2D6" opacity=".11"/>
+      <path d="M940,258 L912,302 L940,292 L968,306 L958,280 Z" fill="#E7E2D6" opacity=".1"/>
+    </svg>
+  </div>
+
+  <div class="wrap">
+    <div class="hero-line">
+      <span class="hero-year">1936 — 2026</span>
+      <span class="eyebrow">SEED <b>/</b> 300 CHARS <b>/</b> ONE LIFE PER 300 METRES</span>
+    </div>
+
+    <div class="ninety">90<em>周年</em></div>
+
+    <h1 class="hero-h">
+      这条字符串一共 <s>300</s> 个字符。<br>
+      长征路上，平均每 <s>300</s> 米<br>
+      就有一名红军牺牲。
+    </h1>
+
+    <p class="hero-lede">
+      页面的颜色、布局、字体与节奏，全部由一串随机生成的字母数字推导而来。
+      它长 300 —— 不是我们选的，是 <span class="mono">/dev/urandom</span> 给的。
+      巧合到令人沉默：那恰好是长征路上一名红军所对应的距离。
+    </p>
+
+    <div class="hero-meta">
+      <div>字符长度 <b>300</b></div>
+      <div>数字个数 <b>36</b></div>
+      <div>大写 / 小写 <b>134 / 130</b></div>
+      <div>翻越大山 <b>18</b></div>
+      <div>渡过江河 <b>24</b></div>
+      <div>途经省份 <b>11</b></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ 字符走带 ============================ -->
+<div class="rail-band">
+  <div class="rail-strip" data-rail-strip="3" aria-hidden="true"></div>
+</div>
+
+<!-- ============================ 01 缘起 ============================ -->
+<section class="pad" id="about">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-no">01 / 缘起</span>
+      <h2 class="sec-t">设计不由人定，<br>由一串随机数决定</h2>
+    </div>
+
+    <div class="grid g-ul rv">
+      <div class="cell" data-i="SEED">
+        <div class="cell-k">RAW SEED · 300 CHARS</div>
+        <div class="seed-stream mono" data-seed-stream style="margin-top:14px"></div>
+        <p class="cell-d" style="margin-top:20px">
+          命令：<span class="mono" style="color:var(--blood)">tr -dc 'A-Za-z0-9' &lt; /dev/urandom | head -c 300</span><br>
+          这串字符里藏着三处东西：<br>
+          · 第 <b class="mono" style="color:var(--ember)">41</b> 位起的 <b class="mono" style="color:var(--ember)">690</b> —— 全串唯一出现的「<b class="mono" style="color:var(--ember)">90</b>」，也就是九十周年本身；<br>
+          · 第 <b class="mono" style="color:var(--blood)">194</b> 位起的 <b class="mono" style="color:var(--blood)">22</b> —— 1936 年 10 月 <b>22</b> 日，将台堡会师；<br>
+          · 数字 0–9、大写 A–Z、小写 a–z 全部出现，<b>一个都不少</b>。
+        </p>
+      </div>
+      <div class="cell" data-i="WHY">
+        <div class="cell-k">WHY IT MATTERS</div>
+        <p class="cell-d" style="margin-top:16px;font-size:15px;color:var(--bone)">
+          2016 年 10 月 21 日，习近平总书记在纪念红军长征胜利 80 周年大会上说：
+        </p>
+        <blockquote class="quote" style="margin-top:20px">
+          <p>“在红一方面军二万五千里的征途上，平均每 <span style="color:var(--blood)">300 米</span>就有一名红军牺牲。”</p>
+          <cite>— 纪念红军长征胜利 80 周年大会</cite>
+        </blockquote>
+        <p class="cell-d" style="margin-top:24px">
+          所以这 300 个字符不只是一个长度。它是一个尺度：读一行代码的时间，
+          走完 300 米的时间，代价是一条命。整站的栅格、配色与动效都从这个数字长出来。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ============================ 02 一个都不少 ============================ -->
+<section class="pad" id="full">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-no">02 / 一个都不少</span>
+      <h2 class="sec-t">62 个符号，无一缺席</h2>
+      <p class="sec-d">
+        300 个随机字符里，0–9、A–Z、a–z 全部 62 个符号一个不缺地出现了。
+        而长征出发时的 8.6 万人，走到陕北只剩不到 7000。
+        一个字符串的完整，与一段征途的残缺，是这页设计里最不想回避的对照。
+      </p>
+    </div>
+    <div class="charset rv d1" data-charset></div>
+    <p class="cell-d" style="margin-top:22px;font-family:var(--code);font-size:11.5px;letter-spacing:.14em;color:var(--mono)">
+      锈红 = 该符号在种子中存在 · 62 / 62 FOUND
+    </p>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ============================ 03 关键数字 ============================ -->
+<section class="pad" id="numbers">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-no">03 / 关键数字</span>
+      <h2 class="sec-t">二万五千里，是算出来的</h2>
+      <p class="sec-d">本页数字取自中央红军（红一方面军）长征统计口径。</p>
+    </div>
+
+    <div class="grid g4 rv">
+      <div class="cell" data-i="01">
+        <div class="cell-k">行程</div>
+        <div class="cell-n">25000<u>里</u></div>
+        <p class="cell-d">约 12500 公里，跨越 11 个省</p>
+      </div>
+      <div class="cell" data-i="02">
+        <div class="cell-k">历时</div>
+        <div class="cell-n">368<u>天</u></div>
+        <p class="cell-d">中央红军自出发至抵达陕北</p>
+      </div>
+      <div class="cell" data-i="03">
+        <div class="cell-k">战斗</div>
+        <div class="cell-n">600<u>余次</u></div>
+        <p class="cell-d">重要战役战斗；中央红军平均每天一场遭遇战</p>
+      </div>
+      <div class="cell" data-i="04">
+        <div class="cell-k">牺牲密度</div>
+        <div class="cell-n">300<u>米 / 人</u></div>
+        <p class="cell-d">平均每前进 300 米，就有一名红军牺牲</p>
+      </div>
+      <div class="cell" data-i="05">
+        <div class="cell-k">大山</div>
+        <div class="cell-n">18<u>座</u></div>
+        <p class="cell-d">其中数座终年积雪，夹金山为第一座</p>
+      </div>
+      <div class="cell" data-i="06">
+        <div class="cell-k">江河</div>
+        <div class="cell-n">24<u>条</u></div>
+        <p class="cell-d">含乌江、赤水、金沙江、大渡河</p>
+      </div>
+      <div class="cell" data-i="07">
+        <div class="cell-k">出发 / 到达</div>
+        <div class="cell-n">86000<u>→ 7000</u></div>
+        <p class="cell-d">中央红军出发 8.6 万余人，到达陕北约 7000 人</p>
+      </div>
+      <div class="cell" data-i="08">
+        <div class="cell-k">牺牲干部</div>
+        <div class="cell-n">430<u>余人</u></div>
+        <p class="cell-d">营以上干部，平均年龄不到 30 岁</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ============================ 04 行程 ============================ -->
+<section class="pad" id="march">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-no">04 / 行程</span>
+      <h2 class="sec-t">从于都河到将台堡</h2>
+      <p class="sec-d">两年零五天，一条用脚印画在地图上的航线。</p>
+    </div>
+
+    <div class="grid g-ul">
+      <div class="cell rv" style="background:transparent">
+        <div class="tl">
+          <div class="tl-item"><div class="tl-date">1934.10</div><h3 class="tl-t">出发 · 于都河</h3><p class="tl-d">中央红军 8.6 万余人从江西瑞金、于都及福建长汀、宁化出发，开始战略转移。当时没有人知道要走到哪里，只知道必须走。</p></div>
+          <div class="tl-item"><div class="tl-date">1934.11 — 12</div><h3 class="tl-t">血战湘江</h3><p class="tl-d">突破第四道封锁线。红军由 8.6 万余人锐减至 3 万余人，江水尽赤。这是长征途中最惨烈的一战。</p></div>
+          <div class="tl-item pivot"><div class="tl-date">1935.01</div><h3 class="tl-t">遵义会议</h3><p class="tl-d">1 月 15—17 日召开政治局扩大会议，确立毛泽东在党中央和红军的领导地位。生死攸关的转折点。</p></div>
+          <div class="tl-item"><div class="tl-date">1935.01 — 05</div><h3 class="tl-t">四渡赤水 · 巧渡金沙江</h3><p class="tl-d">四次渡过赤水河，打乱敌军追堵部署，摆脱数十万国民党军的围追堵截。</p></div>
+          <div class="tl-item"><div class="tl-date">1935.05</div><h3 class="tl-t">强渡大渡河 · 飞夺泸定桥</h3><p class="tl-d">17 名勇士强渡大渡河，22 名突击队员攀铁索夺取泸定桥。</p></div>
+          <div class="tl-item"><div class="tl-date">1935.06 — 09</div><h3 class="tl-t">爬雪山 · 过草地</h3><p class="tl-d">翻越第一座大雪山夹金山；穿越川西北松潘草地，沼泽、寒冷与饥饿夺走的人数不计其数。</p></div>
+          <div class="tl-item"><div class="tl-date">1935.10</div><h3 class="tl-t">抵达吴起镇</h3><p class="tl-d">10 月 19 日，中央红军率先到达陕北吴起镇，与陕北红军会师。二万五千里，走了 368 天。</p></div>
+          <div class="tl-item pivot"><div class="tl-date">1936.10</div><h3 class="tl-t">三大主力会师 · 胜利</h3><p class="tl-d">10 月 9 日，红一、红四方面军在甘肃会宁会师；10 月 22 日，红二方面军到达甘肃将台堡（今宁夏西吉）与红一方面军会师。长征胜利结束。</p></div>
+        </div>
+        <a class="btn" href="march.html" style="margin-top:26px">展开完整行程 →</a>
+      </div>
+
+      <div class="cell rv d2" style="display:flex;flex-direction:column;justify-content:center;gap:26px">
+        <div class="cell-k">THE LINE</div>
+        <svg viewBox="0 0 300 420" style="width:100%;height:auto" aria-label="长征路线示意">
+          <g stroke="#2C3531" stroke-width=".5">
+            <line x1="0" y1="40" x2="300" y2="40"/><line x1="0" y1="140" x2="300" y2="140"/>
+            <line x1="0" y1="250" x2="300" y2="250"/><line x1="0" y1="380" x2="300" y2="380"/>
+          </g>
+          <path d="M30,40 C90,30 60,120 120,140 C180,160 120,220 180,250 C240,280 180,340 250,380"
+                fill="none" stroke="#DD9C2C" stroke-width="7" opacity=".12"/>
+          <path d="M30,40 C90,30 60,120 120,140 C180,160 120,220 180,250 C240,280 180,340 250,380"
+                fill="none" stroke="#B6592B" stroke-width="2"/>
+          <circle cx="120" cy="140" r="12" fill="none" stroke="#DD9C2C" stroke-width="1" opacity=".5"/>
+          <g fill="#0A0C0B" stroke="#B6592B" stroke-width="1.5">
+            <circle cx="30" cy="40" r="6"/><circle cx="120" cy="140" r="6"/>
+            <circle cx="180" cy="250" r="6"/><circle cx="250" cy="380" r="6"/>
+          </g>
+          <g font-family="JetBrains Mono, monospace" font-size="9" fill="#6F7C75">
+            <text x="40" y="34">1934.10 于都</text>
+            <text x="130" y="136">1935.01 遵义</text>
+            <text x="8" y="262">1935.06 雪山草地</text>
+            <text x="132" y="398">1936.10 会宁 · 将台堡</text>
+          </g>
+        </svg>
+        <p class="cell-d">每一次折返都是一步险棋。图上那条线不是直线，因为撤退从来不是。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ============================ 05 战役 ============================ -->
+<section class="pad" id="battles">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-no">05 / 战役</span>
+      <h2 class="sec-t">最难的三次</h2>
+      <p class="sec-d">一次几乎全军覆没，一次定义了转折，一次是绝境中的攀爬。</p>
+    </div>
+    <div class="grid g3 rv">
+      <div class="cell" data-i="1934.11">
+        <div class="cell-k">湘江战役</div>
+        <div class="cell-n" style="font-size:clamp(28px,3.6vw,44px)">8.6万 <u>→</u> 3万</div>
+        <p class="cell-d">1934 年 11 月 25 日至 12 月 1 日。为掩护中央纵队渡江，红军在湘江两岸与敌血战，兵力锐减过半。<b style="color:var(--blood)">代价最惨痛的一战。</b></p>
+      </div>
+      <div class="cell" data-i="1935.01">
+        <div class="cell-k">四渡赤水</div>
+        <div class="cell-n" style="font-size:clamp(28px,3.6vw,44px)">四渡 <u>赤水河</u></div>
+        <p class="cell-d">1935 年 1 月末至 3 月下旬。红军四次往返渡过赤水河，牵着数十万敌军的鼻子走。<b style="color:var(--ember)">毛泽东军事指挥的代表作。</b></p>
+      </div>
+      <div class="cell" data-i="1935.05">
+        <div class="cell-k">飞夺泸定桥</div>
+        <div class="cell-n" style="font-size:clamp(28px,3.6vw,44px)">22 <u>名勇士</u></div>
+        <p class="cell-d">1935 年 5 月 29 日。泸定桥木板被抽走，只剩 13 根铁索横在激流之上，22 名突击队员攀索夺桥，为大军打开生路。</p>
+      </div>
+    </div>
+    <div class="rv d2" style="margin-top:34px">
+      <a class="btn ghost" href="battles.html">全部战役与战斗 →</a>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ============================ 06 人物 ============================ -->
+<section class="pad" id="figures">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-no">06 / 人物</span>
+      <h2 class="sec-t">写下这些名字的人，<br>很多没能走到陕北</h2>
+    </div>
+    <div class="grid g4 rv">
+      <div class="figure">
+        <div class="ph" data-code="1893—1976"><b>毛</b></div>
+        <div class="bd"><h4>毛泽东</h4><div class="role">中央红军 · 主要领导人</div><p>长征途中正确主张被重新认识。遵义会议后指挥四渡赤水，挽救了红军与党。</p></div>
+      </div>
+      <div class="figure">
+        <div class="ph" data-code="1898—1976"><b>周</b></div>
+        <div class="bd"><h4>周恩来</h4><div class="role">中央红军 · 主要领导人</div><p>遵义会议的组织者与支持者，长征途中分管军事与统战，日夜操劳。</p></div>
+      </div>
+      <div class="figure">
+        <div class="ph" data-code="1886—1976"><b>朱</b></div>
+        <div class="bd"><h4>朱德</h4><div class="role">红军总司令</div><p>与张国焘的分裂错误坚决斗争，力促三大主力会师，被誉为“红军之父”。</p></div>
+      </div>
+      <div class="figure">
+        <div class="ph" data-code="1916—2002"><b>罗</b></div>
+        <div class="bd"><h4>罗南辉</h4><div class="role">红五军副军长</div><p>1936 年 10 月 22 日，在华家岭一带阻击战中负伤牺牲，倒在会师前夜。</p></div>
+      </div>
+    </div>
+    <div class="rv d2" style="margin-top:34px">
+      <a class="btn ghost" href="figures.html">更多人物 →</a>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ============================ 07 精神 ============================ -->
+<section class="pad" id="spirit">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-no">07 / 精神</span>
+      <h2 class="sec-t">把苦难讲成信仰，<br>而不是苦难</h2>
+    </div>
+    <div class="rv">
+      <blockquote class="quote">
+        <p>红军不怕远征难，万水千山只等闲。</p>
+        <cite>— 毛泽东《七律·长征》 1935.10</cite>
+      </blockquote>
+    </div>
+    <div class="grid g4 rv d2" style="margin-top:44px">
+      <div class="cell" data-i="A"><div class="cell-k">理想信念</div><p class="cell-d" style="font-size:14px">不知道终点在哪，仍然向前。</p></div>
+      <div class="cell" data-i="B"><div class="cell-k">不怕牺牲</div><p class="cell-d" style="font-size:14px">每 300 米一次代价，无人后退。</p></div>
+      <div class="cell" data-i="C"><div class="cell-k">独立自主</div><p class="cell-d" style="font-size:14px">遵义会议，自己解决自己的问题。</p></div>
+      <div class="cell" data-i="D"><div class="cell-k">依靠群众</div><p class="cell-d" style="font-size:14px">沿途补给，来自百姓的一碗饭。</p></div>
+    </div>
+    <div class="rv d3" style="margin-top:34px">
+      <a class="btn ghost" href="spirit.html">长征精神谱系 →</a>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ============================ 08 九十周年 ============================ -->
+<section class="pad" id="ninety">
+  <div class="wrap">
+    <div class="grid g-ul">
+      <div class="cell rv" style="background:transparent" data-anniv>
+        <span class="sec-no">08 / 九十</span>
+        <h2 class="sec-t" style="margin-top:14px">1936.10.22 — 2026.10.22</h2>
+        <p class="cell-d" style="max-width:56ch;margin-top:18px">
+          将台堡会师至今，已经过去
+          <b class="mono" style="color:var(--blood);font-size:20px" data-anniv-days>—</b> 天。
+          今年十月，中国工农红军长征胜利迎来 <b style="color:var(--ember)">90 周年</b>。
+          会宁会师旧址、将台堡纪念园与沿线各处红色地标，正在举办主题展览与纪念活动。
+        </p>
+        <p class="cell-d mono" style="margin-top:22px;color:var(--ember)" data-anniv-togo>—</p>
+        <a class="btn" href="ninety.html" style="margin-top:26px">进入九十周年专题 →</a>
+      </div>
+      <div class="cell rv d2" style="display:flex;flex-direction:column;justify-content:center">
+        <div class="outline" style="font-size:clamp(58px,11vw,132px);line-height:.86">90</div>
+        <p class="cell-d" style="margin-top:20px">
+          在上面的字符流里，「90」从未被直接写出。
+          它只出现在第 41 位起的 <span class="mono" style="color:var(--ember)">690</span> 当中——
+          那是整串字符里唯一的一次。要找它，需要一位一位读下去。
+          这大概也是理解长征的方式。
+        </p>
+        <a class="btn ghost" href="seed.html" style="margin-top:26px">去种子里找它 →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ 页脚 ============================ -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="brand" style="margin-bottom:14px">
+          <span class="brand-mark">三</span>
+          <span><span class="brand-txt">三百</span><span class="brand-sub">LONG MARCH · 90</span></span>
+        </div>
+        <p class="cell-d" style="max-width:34ch;font-size:13px">
+          以随机字符串推导设计语言的纪念专题。<br>
+          300 字符 · 300 米 · 一条命。
+        </p>
+      </div>
+      <div>
+        <h5>专题</h5>
+        <a href="march.html">行程</a>
+        <a href="numbers.html">数据</a>
+        <a href="battles.html">战役</a>
+        <a href="figures.html">人物</a>
+      </div>
+      <div>
+        <h5>延伸</h5>
+        <a href="spirit.html">长征精神</a>
+        <a href="ninety.html">九十周年</a>
+        <a href="seed.html">种子实验室</a>
+        <a href="index.html">首页</a>
+      </div>
+      <div>
+        <h5>史料</h5>
+        <a href="https://www.gov.cn/" target="_blank" rel="noopener">中国政府网</a>
+        <a href="https://www.cctv.com/" target="_blank" rel="noopener">央视网</a>
+        <a href="https://www.chinanews.com.cn/" target="_blank" rel="noopener">中国新闻网</a>
+        <a href="http://www.dswxyjy.org.cn/" target="_blank" rel="noopener">中央党史和文献研究院</a>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>SEED · POGuRg…MCx2 · 300 CHARS</span>
+      <span>纪念中国工农红军长征胜利九十周年 · 1936 — 2026</span>
+      <span>设计语言由 /dev/urandom 推导</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/site.js"></script>
+</body>
+</html>

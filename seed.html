@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>种子 · 设计语言由随机数推导 — 三百</title>
+<meta name="description" content="《三百》的设计语言推导过程：shell 生成 300 位随机字符，从长度、字符集完整性、大小写比例、数字锚点中提取色彩、布局、字体与节奏。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Noto+Sans+SC:wght@300;400;500&family=JetBrains+Mono:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+
+<div class="march-bar"></div>
+<div class="march-readout"></div>
+<div class="tick-rail" data-tick-rail aria-hidden="true"></div>
+
+<header class="topbar">
+  <a class="brand" href="index.html">
+    <span class="brand-mark">三</span>
+    <span><span class="brand-txt">三百</span><span class="brand-sub">LONG MARCH · 90</span></span>
+  </a>
+  <button class="nav-toggle" aria-label="展开导航">MENU</button>
+  <nav class="nav">
+    <a href="index.html"><i>01</i>首页</a>
+    <a href="march.html"><i>02</i>行程</a>
+    <a href="numbers.html"><i>03</i>数据</a>
+    <a href="battles.html"><i>04</i>战役</a>
+    <a href="figures.html"><i>05</i>人物</a>
+    <a href="spirit.html"><i>06</i>精神</a>
+    <a href="ninety.html"><i>07</i>九十</a>
+    <a href="seed.html"><i>08</i>种子</a>
+  </nav>
+</header>
+
+<section class="phead">
+  <div class="wrap">
+    <div class="crumb">首页 <b>/</b> 08 种子</div>
+    <h1 class="phead-t">这页的配色、<br>版式与节奏，<br>都不是我定的</h1>
+    <p class="phead-d">
+      它们来自下面这一条命令的输出。把随机串当成设计任务书，
+      然后去找它身上的模式——这一页就是全部推导过程。
+    </p>
+  </div>
+</section>
+
+<!-- ============================ 命令 ============================ -->
+<section class="pad" style="padding-top:0">
+  <div class="wrap">
+    <div class="grid g-ul rv">
+      <div class="cell" data-i="CMD">
+        <div class="cell-k">STEP 01 · 生成种子</div>
+        <pre class="code" style="margin-top:16px">$ <b>tr -dc 'A-Za-z0-9'</b> &lt; /dev/urandom | <b>head -c 300</b>
+
+POGuRg3nhYBgf4aCoeWyxQbkHqszVODNHfwKOtgB<em>690</em>HDLIdE2t
+aHggVYsIRyxCcw6Amqt8bTX1h4yJQGlP3JY3EOrlsgtMfqDVu
+z59bdJuHgiTSCOZXCrYRp4LXOfrdaKxfKohbK57pwpAMFsyh6
+f4qtVAcTiCeJUVOrRPuyJONvAPwCNFpoESIsCVHSSyyG<em>22</em>f8Ni
+HTwsL4CGTCXbg1Z5GfG5fNNXIv8IwJj4IdqkMmQ3J7d1dwPMw8DI
+YZjqDby8jDDX7opAkGcXyxelXauicNAtj0yJcTbnhbJYoMCx2</pre>
+        <p class="cell-d" style="margin-top:16px">
+          全长 <b class="mono" style="color:var(--blood)">300</b> 个字符。
+          这不是我们选的常数，是当时 <span class="mono">head -c 300</span> 的产物。
+          而 300 恰是长征路上一条命的距离——设计从这一处巧合开始。
+        </p>
+      </div>
+      <div class="cell" data-i="ANALYZE">
+        <div class="cell-k">STEP 02 · 分析模式</div>
+        <pre class="code" style="margin-top:16px">$ bash seed.sh | grep -A2 体量
+
+全长        : <b>300</b>
+数字        : <b>36</b>
+字母        : 264
+大写        : <b>134</b>
+小写        : <b>130</b>
+
+数字频次
+  0:2   1:3   2:4   3:4   4:<em>6</em>
+  5:4   6:3   7:3   8:5   9:2
+
+连续数字
+  690   59   57   22
+
+字符集覆盖
+  缺数字: <i>（无）</i>
+  缺大写: <i>（无）</i>
+  缺小写: <i>（无）</i></pre>
+        <p class="cell-d" style="margin-top:16px">
+          四条可用的线索浮出来：数字和 164、大小写之比 134:130、
+          唯一的「90」藏在 690 里、以及 62 个符号一个不缺。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="rail-band"><div class="rail-strip" data-rail-strip="3" aria-hidden="true"></div></div>
+
+<!-- ============================ 隐藏模式 ============================ -->
+<section class="pad">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-no">A / 隐藏模式</span>
+      <h2 class="sec-t">四条偶然，四条设计前提</h2>
+      <p class="sec-d">没有一条是刻意的。发现它们之后，全部设计决定都由它们接管。</p>
+    </div>
+
+    <div class="grid g4 rv">
+      <div class="cell" data-i="①">
+        <div class="cell-k">偶然之一</div>
+        <div class="cell-n" style="font-size:clamp(30px,4.4vw,54px);color:var(--blood)">690</div>
+        <p class="cell-d">
+          全串唯一出现的「90」，落在第 41 位起的 <span class="mono">690</span> 里。
+          <b>→ 九十周年不做标题党，只做“可被找到”。</b>
+          于是全站的 90 都保持克制，只在字符流里显影。
+        </p>
+      </div>
+      <div class="cell" data-i="②">
+        <div class="cell-k">偶然之二</div>
+        <div class="cell-n" style="font-size:clamp(30px,4.4vw,54px)">22</div>
+        <p class="cell-d">
+          第 193 位起出现 <span class="mono">22</span>。
+          <b>→ 1936 年 10 月 22 日，将台堡会师。</b>
+          这个日子被做成字符流里唯一的实底高亮——全站唯一的“实心”强调。
+        </p>
+      </div>
+      <div class="cell" data-i="③">
+        <div class="cell-k">偶然之三</div>
+        <div class="cell-n" style="font-size:clamp(30px,4.4vw,54px)">62<u>/62</u></div>
+        <p class="cell-d">
+          0–9、A–Z、a–z 全部出现，无一缺席。
+          <b>→ 与“8.6 万人出发、7000 人到达”构成对照。</b>
+          首页专门用一节把 62 个符号全部点亮。
+        </p>
+      </div>
+      <div class="cell" data-i="④">
+        <div class="cell-k">偶然之四</div>
+        <div class="cell-n" style="font-size:clamp(30px,4.4vw,54px)">134<u>:130</u></div>
+        <p class="cell-d">
+          大写比小写只多 4 个，几乎对半。
+          <b>→ 版式主栅格直接写成 134fr : 130fr。</b>
+          左右两栏因此天然差一点点，永远对不齐——这是刻意的失衡。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ============================ 色彩 ============================ -->
+<section class="pad">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-no">B / 色彩</span>
+      <h2 class="sec-t">色相由数字之和决定</h2>
+      <p class="sec-d">
+        36 位数字之和为 <b class="mono" style="color:var(--blood)">164</b>。
+        取 <span class="mono">(164 × 7) mod 34 + 354</span> 得色相
+        <b class="mono" style="color:var(--blood)">20°</b>——落在朱红与锈橙之间。
+        这就是本站唯一的“红”。
+      </p>
+    </div>
+
+    <div class="palette rv">
+      <div class="sw"><div class="chip" style="background:#0A0C0B"></div>
+        <div class="meta"><b>#0A0C0B · 玄墨</b><span>底色。大写多于小写 → 暗部主导。全局背景</span></div></div>
+      <div class="sw"><div class="chip" style="background:#161C1B"></div>
+        <div class="meta"><b>#161C1B · 铁青</b><span>次层。卡片悬停、夜间山影</span></div></div>
+      <div class="sw"><div class="chip" style="background:#2C3531"></div>
+        <div class="meta"><b>#2C3531 · 石线</b><span>分隔线。栅格步长取锚点间隔众数 7</span></div></div>
+      <div class="sw"><div class="chip" style="background:#6F7C75"></div>
+        <div class="meta"><b>#6F7C75 · 苔灰</b><span>注释色。未点亮的字符、次要信息</span></div></div>
+      <div class="sw"><div class="chip" style="background:#E7E2D6"></div>
+        <div class="meta"><b>#E7E2D6 · 骨白</b><span>主文字。大小写近对半 → 中性暖白，不用纯白</span></div></div>
+      <div class="sw"><div class="chip" style="background:#B6592B"></div>
+        <div class="meta"><b>#B6592B · 锈血</b><span>唯一的“红”。hsl(20 62% 44%)，由数字和导出</span></div></div>
+      <div class="sw"><div class="chip" style="background:#7A2E17"></div>
+        <div class="meta"><b>#7A2E17 · 凝血</b><span>锈血的暗调，用于进度条起手与深阴影</span></div></div>
+      <div class="sw"><div class="chip" style="background:#DD9C2C"></div>
+        <div class="meta"><b>#DD9C2C · 琥珀</b><span>极少量。只给会师、胜利与被找到的「90」</span></div></div>
+    </div>
+
+    <p class="cell-d rv d1" style="margin-top:24px">
+      为什么要用锈色而不是正红？因为真实的红会褪成锈。
+      一处九十年前的战场，留下的不是鲜艳的红旗色，是铁和血氧化之后的那种颜色。
+      而琥珀只出现在“会师”与“被找到”这两件事上——胜利在这套配色里是暖的，也是稀有的。
+    </p>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ============================ 布局 ============================ -->
+<section class="pad">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-no">C / 布局</span>
+      <h2 class="sec-t">栅格写在种子里</h2>
+    </div>
+
+    <div class="grid g-ul rv">
+      <div class="cell" style="background:transparent">
+        <div class="cell-k">134fr : 130fr</div>
+        <div class="ratio" style="margin-top:16px">
+          <div class="l">大写 134</div>
+          <div class="r">小写 130</div>
+        </div>
+        <p class="cell-d" style="margin-top:18px">
+          全站的主分栏不是 50:50，也不是黄金比，而是 <span class="mono">grid-template-columns:134fr 130fr</span>。
+          左边一栏永远比右边宽出那么一点，读者说不出哪里不对，但会感到偏。
+        </p>
+        <p class="cell-d" style="margin-top:14px">
+          这 4 个字符的差值被写进 CSS 变量 <span class="mono" style="color:var(--blood)">--delta: 4</span>，
+          也用在正文的行间距与卡片留白上——整套版式从头到尾都有 4% 的不对齐。
+        </p>
+      </div>
+      <div class="cell" style="background:transparent">
+        <div class="cell-k">三条结构规则</div>
+        <p class="cell-d" style="margin-top:16px">
+          <b style="color:var(--bone)">一、栅格步长 = 7</b><br>
+          数字锚点的位置间隔中，7 反复出现（第 7、14、43、50、77、84、219、226 位）。
+          于是间隙、边距、刻度都取 7 的倍数。<br><br>
+          <b style="color:var(--bone)">二、页面高度 = 300 格</b><br>
+          左侧刻度尺共 300 格，一格一米。滚动条推到底，走完 300 米，也走完这串字符。<br><br>
+          <b style="color:var(--bone)">三、进度 = 二万五千里</b><br>
+          右下角的读数把滚动进度换算成里数，上限 25,000 —— 与字符进度 300 同步显示。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ============================ 字体与节奏 ============================ -->
+<section class="pad">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-no">D / 字体与节奏</span>
+      <h2 class="sec-t">大小写交替，就是行军的脚步</h2>
+      <p class="sec-d">
+        把种子按“大写 U / 小写 L / 数字 D”标记，会得到一条强弱交替的节律带。
+        它被直接用作排版节拍：重衬线打强拍，等宽体打弱拍。
+      </p>
+    </div>
+
+    <div class="cell rv" style="border:1px solid var(--rail)">
+      <div class="cell-k">U = 大写（重衬线，强拍） · L = 小写（等宽，弱拍） · D = 数字（锈红，落点）</div>
+      <div class="rhythm" style="margin-top:18px" id="rhythm"></div>
+    </div>
+
+    <div class="grid g2 rv d1" style="margin-top:1px">
+      <div class="cell" data-i="SERIF">
+        <div class="cell-k">强拍 · 重衬线</div>
+        <div class="serif" style="font-size:clamp(26px,4vw,44px);margin-top:12px;line-height:1.2">红军不怕远征难</div>
+        <p class="cell-d" style="margin-top:14px">
+          历史叙述用 Noto Serif SC 900。厚重、笔画起收明确，对应种子里的 134 个大写字母。
+          用在标题、引文、数字——凡是需要“被记住”的地方。
+        </p>
+      </div>
+      <div class="cell" data-i="MONO">
+        <div class="cell-k">弱拍 · 等宽</div>
+        <div class="mono" style="font-size:clamp(20px,3vw,32px);margin-top:12px;line-height:1.3;color:var(--mono)">POGuRg3nhYBgf4a</div>
+        <p class="cell-d" style="margin-top:14px">
+          数据与种子用 JetBrains Mono。等宽意味着每一位字符占据相同的距离——
+          在这里，“等距”正好是“每一米都算数”的隐喻。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ============================ 阿尔法表 ============================ -->
+<section class="pad">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-no">E / 完整性</span>
+      <h2 class="sec-t">62 个符号，一个都不少</h2>
+      <p class="sec-d">下面是这串随机字符实际包含的全部符号。全部亮起——没有一个是缺的。</p>
+    </div>
+    <div class="charset rv d1" data-charset></div>
+    <div class="grid g3 rv d2" style="margin-top:34px">
+      <div class="cell" data-i="数字"><div class="cell-k">数字</div><div class="cell-n" style="font-size:32px">10<u>/10</u></div><p class="cell-d">0–9 全部出现</p></div>
+      <div class="cell" data-i="大写"><div class="cell-k">大写字母</div><div class="cell-n" style="font-size:32px">26<u>/26</u></div><p class="cell-d">A–Z 全部出现</p></div>
+      <div class="cell" data-i="小写"><div class="cell-k">小写字母</div><div class="cell-n" style="font-size:32px">26<u>/26</u></div><p class="cell-d">a–z 全部出现</p></div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ============================ 结语 ============================ -->
+<section class="pad">
+  <div class="wrap">
+    <div class="rv">
+      <blockquote class="quote">
+        <p>一串随机字符碰巧长 300。<br>长征路上，300 米一个人。<br>这就是这一页全部的缘起。</p>
+        <cite>— 设计说明</cite>
+      </blockquote>
+    </div>
+    <div class="grid g4 rv d1" style="margin-top:44px">
+      <div class="cell" data-i="01"><div class="cell-k">色彩来自</div><p class="cell-d">36 位数字之和 164</p></div>
+      <div class="cell" data-i="02"><div class="cell-k">布局来自</div><p class="cell-d">大小写比 134 : 130</p></div>
+      <div class="cell" data-i="03"><div class="cell-k">节奏来自</div><p class="cell-d">大小写交替的二拍</p></div>
+      <div class="cell" data-i="04"><div class="cell-k">主题来自</div><p class="cell-d">藏在 690 里的 90</p></div>
+    </div>
+    <div class="rv d2" style="margin-top:34px;display:flex;gap:14px;flex-wrap:wrap">
+      <a class="btn" href="index.html">回到首页</a>
+      <a class="btn ghost" href="ninety.html">九十周年专题 →</a>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="brand" style="margin-bottom:14px">
+          <span class="brand-mark">三</span>
+          <span><span class="brand-txt">三百</span><span class="brand-sub">LONG MARCH · 90</span></span>
+        </div>
+        <p class="cell-d" style="max-width:34ch;font-size:13px">
+          种子：<span class="mono" style="font-size:11px">POGuRg…MCx2</span><br>300 字符 · 300 米 · 一条命。
+        </p>
+      </div>
+      <div><h5>专题</h5><a href="march.html">行程</a><a href="numbers.html">数据</a><a href="battles.html">战役</a><a href="figures.html">人物</a></div>
+      <div><h5>延伸</h5><a href="spirit.html">长征精神</a><a href="ninety.html">九十周年</a><a href="seed.html">种子实验室</a><a href="index.html">首页</a></div>
+      <div><h5>史料</h5><a href="https://www.gov.cn/" target="_blank" rel="noopener">中国政府网</a><a href="https://www.cctv.com/" target="_blank" rel="noopener">央视网</a><a href="https://www.chinanews.com.cn/" target="_blank" rel="noopener">中国新闻网</a><a href="http://www.dswxyjy.org.cn/" target="_blank" rel="noopener">中央党史和文献研究院</a></div>
+    </div>
+    <div class="foot-bot">
+      <span>SEED · POGuRg…MCx2 · 300 CHARS</span>
+      <span>纪念中国工农红军长征胜利九十周年 · 1936 — 2026</span>
+      <span>设计语言由 /dev/urandom 推导</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/site.js"></script>
+<script>
+/* 节奏带：把种子的 U/L/D 序列可视化 */
+(function(){
+  var host = document.getElementById('rhythm');
+  if (!host) return;
+  var S = 'POGuRg3nhYBgf4aCoeWyxQbkHqszVODNHfwKOtgB690HDLIdE2taHggVYsIRyxCcw6Amqt8bTX1h4yJQGlP3JY3EOrlsgtMfqDVuz59bdJuHgiTSCOZXCrYRp4LXOfrdaKxfKohbK57pwpAMFsyh6f4qtVAcTiCeJUVOrRPuyJONvAPwCNFpoESIsCVHSSyyG22f8NiHTwsL4CGTCXbg1Z5GfG5fNNXIv8IwJj4IdqkMmQ3J7d1dwPMw8DIYZjqDby8jDDX7opAkGcXyxelXauicNAtj0yJcTbnhbJYoMCx2';
+  var frag = document.createDocumentFragment();
+  for (var i = 0; i < S.length; i++) {
+    var c = S[i], k;
+    if (c >= '0' && c <= '9') k = 'D';
+    else if (c >= 'A' && c <= 'Z') k = 'U';
+    else k = 'L';
+    var e = document.createElement('i');
+    e.className = k;
+    frag.appendChild(e);
+  }
+  host.appendChild(frag);
+})();
+</script>
+</body>
+</html>

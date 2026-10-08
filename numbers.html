@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>数据 · 二万五千里是算出来的 — 三百</title>
+<meta name="description" content="长征关键数据：二万五千里、368天、600余次战斗、翻越18座大山、跨过24条大河、平均每300米一名红军牺牲。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Noto+Sans+SC:wght@300;400;500&family=JetBrains+Mono:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+
+<div class="march-bar"></div>
+<div class="march-readout"></div>
+<div class="tick-rail" data-tick-rail aria-hidden="true"></div>
+
+<header class="topbar">
+  <a class="brand" href="index.html">
+    <span class="brand-mark">三</span>
+    <span><span class="brand-txt">三百</span><span class="brand-sub">LONG MARCH · 90</span></span>
+  </a>
+  <button class="nav-toggle" aria-label="展开导航">MENU</button>
+  <nav class="nav">
+    <a href="index.html"><i>01</i>首页</a>
+    <a href="march.html"><i>02</i>行程</a>
+    <a href="numbers.html"><i>03</i>数据</a>
+    <a href="battles.html"><i>04</i>战役</a>
+    <a href="figures.html"><i>05</i>人物</a>
+    <a href="spirit.html"><i>06</i>精神</a>
+    <a href="ninety.html"><i>07</i>九十</a>
+    <a href="seed.html"><i>08</i>种子</a>
+  </nav>
+</header>
+
+<section class="phead">
+  <div class="wrap">
+    <div class="crumb">首页 <b>/</b> 03 数据</div>
+    <h1 class="phead-t">二万五千里<br>是算出来的</h1>
+    <p class="phead-d">
+      这一页的数字不是修辞。它们来自中央红军长征的统计口径，
+      最有分量的一条出自 2016 年纪念红军长征胜利 80 周年大会：
+      平均每前进 300 米，就有一名红军牺牲。
+    </p>
+  </div>
+</section>
+
+<!-- ============================ 主数字 ============================ -->
+<section class="pad" style="padding-top:0">
+  <div class="wrap">
+    <div class="grid g3 rv">
+      <div class="cell" data-i="L1">
+        <div class="cell-k">总行程</div>
+        <div class="cell-n">25000<u>里</u></div>
+        <p class="cell-d">约 12500 公里。若按日均 74 华里计算，相当于每天走完一个马拉松再多一半。</p>
+      </div>
+      <div class="cell" data-i="L2">
+        <div class="cell-k">历时</div>
+        <div class="cell-n">368<u>天</u></div>
+        <p class="cell-d">中央红军自 1934 年 10 月出发至 1935 年 10 月抵达陕北。</p>
+      </div>
+      <div class="cell" data-i="L3" style="background:var(--ink-2)">
+        <div class="cell-k" style="color:var(--blood)">最重的一条</div>
+        <div class="cell-n" style="color:var(--blood)">300<u style="color:var(--ember)">米 / 人</u></div>
+        <p class="cell-d">平均每前进 300 米，就有一名红军牺牲。本页的整个设计系统就建立在这个数字上。</p>
+      </div>
+    </div>
+
+    <div class="grid g4 rv d1" style="margin-top:1px">
+      <div class="cell" data-i="01"><div class="cell-k">重要战役战斗</div><div class="cell-n">600<u>余次</u></div><p class="cell-d">中央红军平均每天一场遭遇战</p></div>
+      <div class="cell" data-i="02"><div class="cell-k">翻越大山</div><div class="cell-n">18<u>座</u></div><p class="cell-d">其中数座终年积雪</p></div>
+      <div class="cell" data-i="03"><div class="cell-k">跨过大河</div><div class="cell-n">24<u>条</u></div><p class="cell-d">乌江、赤水、金沙江、大渡河…</p></div>
+      <div class="cell" data-i="04"><div class="cell-k">途经省份</div><div class="cell-n">11<u>省</u></div><p class="cell-d">赣、闽、粤、湘、黔、桂、滇、川、康、甘、陕</p></div>
+      <div class="cell" data-i="05"><div class="cell-k">日均行军</div><div class="cell-n">37<u>公里</u></div><p class="cell-d">约 74 华里，且多在无补给状态下</p></div>
+      <div class="cell" data-i="06"><div class="cell-k">出发兵力</div><div class="cell-n">86000<u>余人</u></div><p class="cell-d">中央红军出发时的总人数</p></div>
+      <div class="cell" data-i="07"><div class="cell-k">到达兵力</div><div class="cell-n">7000<u>人</u></div><p class="cell-d">抵达陕北时约剩此数，不足出发的十分之一</p></div>
+      <div class="cell" data-i="08"><div class="cell-k">营以上干部牺牲</div><div class="cell-n">430<u>余人</u></div><p class="cell-d">平均年龄不到 30 岁</p></div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ============================ 300 米可视化 ============================ -->
+<section class="pad">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-no">A / 尺度</span>
+      <h2 class="sec-t">300 米有多长</h2>
+      <p class="sec-d">
+        下面这一串字符一共 300 个，是本站设计系统的原点。
+        把它当作一把尺：在长征路上，走完它的长度，代价是一个人。
+      </p>
+    </div>
+
+    <div class="grid g-ul rv">
+      <div class="cell" data-i="SEED">
+        <div class="cell-k">300 CHARS = 300 METRES = 1 LIFE</div>
+        <div class="seed-stream mono" data-seed-stream style="margin-top:14px"></div>
+      </div>
+      <div class="cell" data-i="READ">
+        <div class="cell-k">怎么读这把尺</div>
+        <p class="cell-d" style="margin-top:16px">
+          <b style="color:var(--blood)">锈红字符</b> = 种子里的数字，共 36 个，构成刻度的主要节拍。<br><br>
+          <b style="color:var(--ember)">琥珀高亮</b> = 第 41、42 位的「9」「0」，它们连起来才是九十周年的 90。<br><br>
+          <b style="background:var(--blood);color:var(--ink);padding:1px 5px">实底方块</b> = 第 193、194 位的「2」「2」，1936 年 10 月 22 日，将台堡会师。<br><br>
+          <b style="color:var(--bone)">骨白大写</b> = 134 个字母，构成版面上半部的明部；小写 130 个，构成暗部。二者之比被用作全站栅格。
+        </p>
+        <p class="cell-d mono" style="margin-top:20px;color:var(--mono)">
+          HOVER 任一字符，可读到它对应的里程与史实。
+        </p>
+      </div>
+    </div>
+
+    <div class="grid g4 rv d2" style="margin-top:1px">
+      <div class="cell" data-i="134"><div class="cell-k">大写字母</div><div class="cell-n">134</div><p class="cell-d">→ 栅格左栏 134fr</p></div>
+      <div class="cell" data-i="130"><div class="cell-k">小写字母</div><div class="cell-n">130</div><p class="cell-d">→ 栅格右栏 130fr</p></div>
+      <div class="cell" data-i="36"><div class="cell-k">数字</div><div class="cell-n">36</div><p class="cell-d">→ 刻度锚点数量</p></div>
+      <div class="cell" data-i="62"><div class="cell-k">完整符号集</div><div class="cell-n">62<u>/62</u></div><p class="cell-d">一个都不少</p></div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ============================ 换算 ============================ -->
+<section class="pad">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-no">B / 换算</span>
+      <h2 class="sec-t">把 25000 里拆开看</h2>
+    </div>
+    <div class="grid g3 rv">
+      <div class="cell" data-i="X1">
+        <div class="cell-k">每公里</div>
+        <div class="cell-n" style="font-size:clamp(28px,3.4vw,44px)">3 — 4<u>人</u></div>
+        <p class="cell-d">平均每行进 1 公里就有 3 至 4 位战士牺牲。与“每 300 米一名”是同一减员强度的两种换算口径。</p>
+      </div>
+      <div class="cell" data-i="X2">
+        <div class="cell-k">每天</div>
+        <div class="cell-n" style="font-size:clamp(28px,3.4vw,44px)">68<u>人</u></div>
+        <p class="cell-d">以 368 天、从 8.6 万到 7000 计算，日均减员约六十八人。这个数字里不包含掉队与被俘者。</p>
+      </div>
+      <div class="cell" data-i="X3">
+        <div class="cell-k">每一场战斗</div>
+        <div class="cell-n" style="font-size:clamp(28px,3.4vw,44px)">≈ 3<u>天 1 场</u></div>
+        <p class="cell-d">600 余次重要战役战斗分布在两年间，中央红军则几乎每天一场遭遇战。</p>
+      </div>
+    </div>
+
+    <div class="rv d1" style="margin-top:44px">
+      <blockquote class="quote">
+        <p>“在红一方面军二万五千里的征途上，平均每 300 米就有一名红军牺牲。”</p>
+        <cite>— 2016 年 10 月 21 日 · 纪念红军长征胜利 80 周年大会</cite>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="brand" style="margin-bottom:14px">
+          <span class="brand-mark">三</span>
+          <span><span class="brand-txt">三百</span><span class="brand-sub">LONG MARCH · 90</span></span>
+        </div>
+        <p class="cell-d" style="max-width:34ch;font-size:13px">300 字符 · 300 米 · 一条命。</p>
+      </div>
+      <div><h5>专题</h5><a href="march.html">行程</a><a href="numbers.html">数据</a><a href="battles.html">战役</a><a href="figures.html">人物</a></div>
+      <div><h5>延伸</h5><a href="spirit.html">长征精神</a><a href="ninety.html">九十周年</a><a href="seed.html">种子实验室</a><a href="index.html">首页</a></div>
+      <div><h5>史料</h5><a href="https://www.gov.cn/" target="_blank" rel="noopener">中国政府网</a><a href="https://www.cctv.com/" target="_blank" rel="noopener">央视网</a><a href="https://www.chinanews.com.cn/" target="_blank" rel="noopener">中国新闻网</a><a href="http://www.dswxyjy.org.cn/" target="_blank" rel="noopener">中央党史和文献研究院</a></div>
+    </div>
+    <div class="foot-bot">
+      <span>SEED · POGuRg…MCx2 · 300 CHARS</span>
+      <span>纪念中国工农红军长征胜利九十周年 · 1936 — 2026</span>
+      <span>设计语言由 /dev/urandom 推导</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/site.js"></script>
+</body>
+</html>
